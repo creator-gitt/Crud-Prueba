@@ -1,0 +1,398 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    .form-container {
+        font-family: 'Poppins', sans-serif;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        width: 600px;
+        max-width: 90vw;
+        overflow: hidden;
+        animation: slideIn 0.5s ease-out;
+        position: relative;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .form-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 30px;
+        color: white;
+        position: relative;
+        cursor: move;
+    }
+    
+    .form-header h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .form-header .icon {
+        font-size: 32px;
+    }
+    
+    .btn-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        z-index: 10;
+    }
+    
+    .btn-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(90deg);
+    }
+    
+    .form-body {
+        padding: 40px;
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .form-group label {
+        display: block;
+        font-weight: 500;
+        color: #4a5568;
+        margin-bottom: 8px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .input-wrapper {
+        position: relative;
+    }
+    
+    .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #a0aec0;
+        font-size: 18px;
+        pointer-events: none;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 14px 15px 14px 45px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.3s;
+        background: #f7fafc;
+        color: #000000 !important;
+    }
+    
+    .form-control::placeholder {
+        color: #a0aec0;
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: #667eea;
+        background: white;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        color: #000000 !important;
+    }
+    
+    .form-control:hover {
+        border-color: #cbd5e0;
+    }
+    
+    .form-footer {
+        padding: 0 40px 40px;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        padding: 14px 32px;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: 'Poppins', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    
+    .btn-warning {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    }
+    
+    .btn-warning:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+    }
+    
+    .btn-info {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+    }
+    
+    .btn-info:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+    }
+    
+    .btn:active {
+        transform: translateY(0);
+    }
+    
+    .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    @media (max-width: 640px) {
+        .row {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-body {
+            padding: 30px 20px;
+        }
+        
+        .form-footer {
+            padding: 0 20px 30px;
+            flex-direction: column;
+        }
+        
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+<form id="frmMaterias" class="form-container">
+    <div class="form-header">
+        <h2>
+            <span class="icon">📚</span>
+            Administración de Materias
+        </h2>
+        <button type="button" class="btn-close" data-form="materias" aria-label="Close">✕</button>
+    </div>
+    
+    <div class="form-body">
+        <div class="form-group">
+            <label for="txtCodigoMateria">Código</label>
+            <div class="input-wrapper">
+                <span class="input-icon">🔖</span>
+                <input 
+                    required 
+                    type="text" 
+                    id="txtCodigoMateria" 
+                    name="txtCodigoMateria" 
+                    class="form-control"
+                    placeholder="Ej: MAT101"
+                />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="txtNombreMateria">Nombre de la Materia</label>
+            <div class="input-wrapper">
+                <span class="input-icon">📖</span>
+                <input 
+                    required 
+                    type="text" 
+                    id="txtNombreMateria" 
+                    name="txtNombreMateria" 
+                    class="form-control"
+                    placeholder="Ej: Matemáticas Avanzadas"
+                />
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group">
+                <label for="numCreditosMateria">Créditos</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">⭐</span>
+                    <input 
+                        required 
+                        type="number" 
+                        id="numCreditosMateria" 
+                        name="numCreditosMateria" 
+                        class="form-control" 
+                        min="0"
+                        placeholder="0"
+                    />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="numHorasMateria">Horas</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">⏰</span>
+                    <input 
+                        required 
+                        type="number" 
+                        id="numHorasMateria" 
+                        name="numHorasMateria" 
+                        class="form-control" 
+                        min="0"
+                        placeholder="0"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-footer">
+        <button type="submit" class="btn btn-primary">
+            <span>💾</span> Guardar
+        </button>
+        <button type="reset" class="btn btn-warning">
+            <span>🔄</span> Nuevo
+        </button>
+        <button type="button" id="btnBuscarMateria" class="btn btn-info">
+            <span>🔍</span> Buscar
+        </button>
+    </div>
+</form>
+
+<script>
+    var accion = "agregar",
+        idMateria = 0;
+    
+    // Configurar botón cerrar
+    document.querySelector('.btn-close[data-form="materias"]').addEventListener('click', function() {
+        document.getElementById('materias').style.display = 'none';
+    });
+    
+    frmMaterias.addEventListener("submit", e => {
+        e.preventDefault();
+        guardarMaterias();
+    });
+
+    frmMaterias.addEventListener("reset", e => {
+        limpiarFormulario();
+    });
+
+    async function guardarMaterias() {
+        let datos = {
+            accion: accion,
+            idmaterias: idMateria,
+            codigo: txtCodigoMateria.value,
+            nombre: txtNombreMateria.value,
+            creditos: parseInt(numCreditosMateria.value) || 0,
+            horas: parseInt(numHorasMateria.value) || 0
+        };
+        
+        console.log("Enviando datos:", datos);
+        
+        try {
+            let response = await fetch("/materias", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datos),
+            });
+            
+            let respuesta = await response.json();
+            console.log("Respuesta del servidor:", respuesta);
+            
+            if(respuesta.msg && respuesta.msg.toLowerCase().includes("error")) {
+                alertify.error(respuesta.msg);
+                return;
+            }
+            
+            alertify.success(respuesta.msg);
+            limpiarFormulario();
+            
+            if(typeof obtenerMaterias === 'function') {
+                obtenerMaterias();
+            }
+        } catch(error) {
+            console.error("Error:", error);
+            alertify.error("Error al procesar la solicitud");
+        }
+    }
+
+    function limpiarFormulario() {
+        accion = "agregar";
+        idMateria = 0;
+        txtCodigoMateria.value = "";
+        txtNombreMateria.value = "";
+        numCreditosMateria.value = "";
+        numHorasMateria.value = "";
+        txtCodigoMateria.focus();
+    }
+
+    function mostrarMateria(materia) {
+        accion = "actualizar";
+        idMateria = materia.idmaterias;
+        txtCodigoMateria.value = materia.codigo;
+        txtNombreMateria.value = materia.nombre;
+        numCreditosMateria.value = materia.creditos;
+        numHorasMateria.value = materia.horas;
+        alertify.success(`Materia ${materia.nombre} cargada para editar`);
+    }
+
+    btnBuscarMateria.addEventListener("click", e => {
+        e.preventDefault();
+        abrirVentana('busqueda_materias');
+    });
+</script>  
